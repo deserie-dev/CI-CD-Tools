@@ -6,6 +6,6 @@ test("GET route", async () => {
         .get("/")
         .expect(200)
         .then(async (res) => {
-            expect(res.body).toBe("Hello world")
+            expect(res.body).toBe("SCA Cloud School Week 5: CI/CD Tools")
         })
 });
