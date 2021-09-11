@@ -7,8 +7,3 @@ jobs:
     steps:
       - checkout
       - run: npm run test
-
-workflows:
-  build:
-    jobs:
-      - test
