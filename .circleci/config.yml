@@ -3,23 +3,24 @@ version: 2.1
 orbs:
   node: circleci/node@4.1
 
-workflows:
-  build_and_test::
-    jobs:
-      - build
-      - test
-
 jobs:
   build:
+    docker:
+      - image: circleci/node:10.16.0
     steps:
       - checkout
-      - run:
-          name: install dependencies
-          command: npm install
+      - run: npm install
+      - run: npm start
 
   test:
     steps:
       - checkout
-      - run:
-          name: test
-          command: npm run test
+      - run: npm run test
+
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
