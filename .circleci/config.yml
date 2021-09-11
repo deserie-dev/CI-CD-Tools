@@ -6,7 +6,13 @@ jobs:
       - image: circleci/node:14
     steps:
       - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
       - run: npm start
       - run: npm run test
 
