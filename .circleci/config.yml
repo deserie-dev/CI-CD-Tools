@@ -1,25 +1,10 @@
 version: 2.1
-orbs:
-  node: circleci/node@1.1.6
 
-jobs:
-  build:
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies
-          command: npm install
-  test:
-    steps:
-      - checkout
-      - run:
-          name: Run test
-          command: npm run test
+orbs:
+  node: circleci/node@4.1
 
 workflows:
-  build_and_test:
+  build_and_test::
     jobs:
       - build
-      - test:
-          requires:
-            - build
+      - test
