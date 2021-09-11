@@ -8,18 +8,9 @@ jobs:
       - checkout
       - run: npm install
       - run: npm start
-
-  test:
-    docker:
-      - image: circleci/node:14
-    steps:
-      - checkout
       - run: npm run test
 
 workflows:
-  build_and_test:
+  build:
     jobs:
       - build
-      - test:
-          requires:
-            - build
