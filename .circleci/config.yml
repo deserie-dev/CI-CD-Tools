@@ -8,3 +8,18 @@ workflows:
     jobs:
       - build
       - test
+
+jobs:
+  build:
+    steps:
+      - checkout
+      - run:
+          name: install dependencies
+          command: npm install
+
+  test:
+    steps:
+      - checkout
+      - run:
+          name: test
+          command: npm run test
