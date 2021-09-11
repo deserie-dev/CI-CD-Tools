@@ -13,6 +13,8 @@ jobs:
       - run: npm start
 
   test:
+    docker:
+      - image: circleci/node:10.16.0
     steps:
       - checkout
       - run: npm run test
