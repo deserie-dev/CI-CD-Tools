@@ -6,12 +6,18 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/node:14
+      - image: circleci/node:4.7.0
     steps:
       - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install project dependencies
           command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
       - run:
           name: run test
           command: npm run test
