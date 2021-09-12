@@ -1,7 +1,5 @@
 language: node_js
 node_js:
-  - 10
-
-script:
-  - npm install
-  - npm test
+  - "stable"
+install: npm install
+script: npm test
